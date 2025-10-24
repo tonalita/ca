@@ -219,22 +219,51 @@
         .tab-button:not(.active):hover {
             background-color: #E0E0E0;
         }
-        
+
+        /* Sub Tab Navigation for Drinks */
+        .sub-tab-nav {
+            display: flex;
+            justify-content: center;
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--card-bg);
+            max-width: 500px;
+            margin: 1.5em auto;
+        }
+
+        .sub-tab-button {
+            flex-grow: 1;
+            padding: 0.7em;
+            font-size: 1em;
+            font-weight: 600;
+            color: var(--secondary-color);
+            background: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .sub-tab-button.active {
+            background: var(--secondary-color);
+            color: var(--light-text);
+            border-color: var(--secondary-color);
+        }
+
         /* Content Visibility */
-        .tab-content {
+        .tab-content, .drink-content {
             display: none;
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
-        .tab-content.active {
+        .tab-content.active, .drink-content.active {
             display: block;
             opacity: 1;
             transform: translateY(0);
         }
         
-        /* --- 4. MENU ITEM STYLES (Used for Meals & Desserts with images) --- */
+        /* --- 4. MENU ITEM STYLES --- */
         .menu-category {
             margin-bottom: 3em;
         }
@@ -289,12 +318,11 @@
             clear: both;
         }
 
-        /* Drink Grid Styles (Used for the Drinks Tab) */
+        /* Drink Grid Styles */
         .drink-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1em;
-            margin-bottom: 2em;
         }
         
         .drink-grid > div {
@@ -379,11 +407,11 @@
                 min-width: 100%;
             }
 
-            .tab-nav {
+            .tab-nav, .sub-tab-nav {
                 flex-direction: column;
             }
 
-            .tab-button {
+            .tab-button, .sub-tab-button {
                 font-size: 1em;
             }
 
@@ -420,7 +448,7 @@
             
             <h2>"Built for Curious Plates"</h2>
             
-            <button class="cta-button" onclick="showMenu()">Menu</button>
+            <button class="cta-button" onclick="showMenu()">Explore Our Menu</button>
         </div>
         
         <div id="contact-info">
@@ -500,7 +528,7 @@
                     <img src="https://placehold.co/120x90/333333/FFFFFF?text=Inferno" onerror="this.onerror=null;this.src='https://placehold.co/120x90/333333/FFFFFF?text=Inferno';" alt="Sweet Inferno Burger">
                     <div class="item-details">
                         <h5>Sweet Inferno (Chicken)</h5><span>£6.95</span>
-                        <p>Crunchy chicken topped with lettuce, coleslaw and a hint of sweet and chilly.</p>
+                        <p>Crunchy chicken topped with lettuce, coleslaw and a hint of sweet and chili.</p>
                     </div>
                 </div>
                 <div class="menu-item-with-img">
@@ -527,11 +555,11 @@
             </div>
 
             <div class="menu-category">
-                <h4>Wraps</h4>
+                <h4>Wraps, Fries & Sides</h4>
                 <div class="menu-item-with-img">
                     <img src="https://placehold.co/120x90/555555/FFFFFF?text=BBQ" onerror="this.onerror=null;this.src='https://placehold.co/120x90/555555/FFFFFF?text=BBQ';" alt="Classic BBQ Wrap">
                     <div class="item-details">
-                        <h5>Classic BBQ</h5><span>£5.50</span>
+                        <h5>Classic BBQ Wrap</h5><span>£5.50</span>
                         <p>Crispy chicken with lettuce, cheese and special BBQ sauce wrapped in tortilla.</p>
                     </div>
                 </div>
@@ -542,10 +570,6 @@
                         <p>Crispy chicken with lettuce, cheese and mayo sauce wrapped in tortilla.</p>
                     </div>
                 </div>
-            </div>
-
-            <div class="menu-category">
-                <h4>Loaded Fries</h4>
                 <div class="menu-item-with-img">
                     <img src="https://placehold.co/120x90/333333/FFFFFF?text=Loaded" onerror="this.onerror=null;this.src='https://placehold.co/120x90/333333/FFFFFF?text=Loaded';" alt="Chicken Loaded fries">
                     <div class="item-details">
@@ -560,22 +584,11 @@
                         <p>Chicken tenders and fries layered with nachos, and spicy sauce.</p>
                     </div>
                 </div>
-            </div>
-
-            <div class="menu-category">
-                <h4>Sides</h4>
                 <div class="menu-item-with-img">
                     <img src="https://placehold.co/120x90/555555/FFFFFF?text=Wings" onerror="this.onerror=null;this.src='https://placehold.co/120x90/555555/FFFFFF?text=Wings';" alt="BBQ Wings">
                     <div class="item-details">
                         <h5>BBQ Wings (5pcs)</h5><span>£4.95</span>
                         <p>Tender wings slightly grilled and glazed with smoky BBQ sauce.</p>
-                    </div>
-                </div>
-                <div class="menu-item-with-img">
-                    <img src="https://placehold.co/120x90/555555/FFFFFF?text=Crispy+Wings" onerror="this.onerror=null;this.src='https://placehold.co/120x90/555555/FFFFFF?text=Crispy+Wings';" alt="Crispy Wings">
-                    <div class="item-details">
-                        <h5>Crispy Wings (5pcs)</h5><span>£4.25</span>
-                        <p>Crisp-fried wings with a golden crunch.</p>
                     </div>
                 </div>
                 <div class="menu-item-with-img">
@@ -595,20 +608,20 @@
                     <img src="https://placehold.co/120x90/333333/FFFFFF?text=Loua+Strawberry" onerror="this.onerror=null;this.src='https://placehold.co/120x90/333333/FFFFFF?text=Loua+Strawberry';" alt="Edgptian Lou’a Strawberry">
                     <div class="item-details">
                         <h6>Strawberry</h6><span>£12.95</span>
-                        <p>Delicate layers of crispy kunafa filled with rich cream cheese and fresh strawberries, finished with a luxurious pistachio sauce. (Add nutella or biscoff £1)</p>
+                        <p>Delicate layers of crispy kunafa filled with rich cream cheese and fresh strawberries, finished with a luxurious pistachio sauce. (Add Nutella or Biscoff £1)</p>
                     </div>
                 </div>
                 <div class="menu-item-with-img">
                     <img src="https://placehold.co/120x90/333333/FFFFFF?text=Loua+Mango" onerror="this.onerror=null;this.src='https://placehold.co/120x90/333333/FFFFFF?text=Loua+Mango';" alt="Edgptian Lou’a Mango">
                     <div class="item-details">
                         <h6>Mango</h6><span>£13.95</span>
-                        <p>A heavenly blend of creamy cheese and ripe mango between layers of golden kunafa, topped with smooth pistachio drizzle. (Add nutella or biscoff £1)</p>
+                        <p>A heavenly blend of creamy cheese and ripe mango between layers of golden kunafa, topped with smooth pistachio drizzle. (Add Nutella or Biscoff £1)</p>
                     </div>
                 </div>
             </div>
 
             <div class="menu-category">
-                <h4>Waffles</h4>
+                <h4>Waffles & Crepes</h4>
                 
                 <div class="menu-item-with-img">
                     <img src="https://placehold.co/120x90/555555/FFFFFF?text=Pistachio+Waffle" onerror="this.onerror=null;this.src='https://placehold.co/120x90/555555/FFFFFF?text=Pistachio+Waffle';" alt="Pistachio kunafa sandwich Waffle">
@@ -618,183 +631,106 @@
                     </div>
                 </div>
                 <div class="menu-item-with-img">
-                    <img src="https://placehold.co/120x90/555555/FFFFFF?text=Oreo+Crunch" onerror="this.onerror=null;this.src='https://placehold.co/120x90/555555/FFFFFF?text=Oreo+Crunch';" alt="Oreo Crunch Waffle">
+                    <img src="https://placehold.co/120x90/555555/FFFFFF?text=Oreo+Waffle" onerror="this.onerror=null;this.src='https://placehold.co/120x90/555555/FFFFFF?text=Oreo+Waffle';" alt="Oreo Crunch Waffle">
                     <div class="item-details">
-                        <h6>Oreo Crunch</h6><span>£5.95</span>
-                        <p>Crispy waffle topped with crushed Oreo cookies and chocolate sauce, finished with a dollop of whipped cream.</p>
-                    </div>
-                </div>
-                 <div class="menu-item-with-img">
-                    <img src="https://placehold.co/120x90/555555/FFFFFF?text=Strawberry+Bloom" onerror="this.onerror=null;this.src='https://placehold.co/120x90/555555/FFFFFF?text=Strawberry+Bloom';" alt="Strawberry Bloom Waffle">
-                    <div class="item-details">
-                        <h6>Strawberry Bloom</h6><span>£7.50</span>
-                        <p>Fresh strawberries blended with creamy milk, lightly sweetened, and topped with a delicate strawberry foam.</p>
+                        <h6>Oreo Crunch Waffle</h6><span>£5.95</span>
+                        <p>Crispy waffle topped with crushed Oreo cookies and chocolate sauce, finished with whipped cream.</p>
                     </div>
                 </div>
                 <div class="menu-item-with-img">
-                    <img src="https://placehold.co/120x90/555555/FFFFFF?text=Waffle+Bites" onerror="this.onerror=null;this.src='https://placehold.co/120x90/555555/FFFFFF?text=Waffle+Bites';" alt="Waffle Bites">
+                    <img src="https://placehold.co/120x90/555555/FFFFFF?text=Biscoff+Crepe" onerror="this.onerror=null;this.src='https://placehold.co/120x90/555555/FFFFFF?text=Biscoff+Crepe';" alt="Biscoff Nutella Crepe">
                     <div class="item-details">
-                        <h6>Waffle Bites</h6><span>£6.95</span>
-                        <p>Crispy, bite-sized waffles, perfect for a sweet treat or sharing with friends.</p>
+                        <h6>Biscoff Nutella Crepe</h6><span>£5.95</span>
                     </div>
                 </div>
                 <div class="menu-item-with-img">
-                    <img src="https://placehold.co/120x90/555555/FFFFFF?text=Biscoff+Nutella+Waffle" onerror="this.onerror=null;this.src='https://placehold.co/120x90/555555/FFFFFF?text=Biscoff+Nutella+Waffle';" alt="Biscoff Nutella Waffle">
+                    <img src="https://placehold.co/120x90/555555/FFFFFF?text=Choco+Berry+Crepe" onerror="this.onerror=null;this.src='https://placehold.co/120x90/555555/FFFFFF?text=Choco+Berry+Crepe';" alt="Choco Berry and banana Crepe">
                     <div class="item-details">
-                        <h6>Biscoff Nutella</h6><span>£5.50</span>
-                        <p>Fluffy golden waffle layered with rich Nutella and warm Biscoff sauce, topped with crushed Lotus Biscoff biscuits.</p>
+                        <h6>Choco Berry and Banana Crepe</h6><span>£6.95</span>
                     </div>
                 </div>
-                <div class="menu-item-with-img">
-                    <img src="https://placehold.co/120x90/555555/FFFFFF?text=Pistachio+Nutella+Waffle" onerror="this.onerror=null;this.src='https://placehold.co/120x90/555555/FFFFFF?text=Pistachio+Nutella+Waffle';" alt="Pistachio Nutella Waffle">
-                    <div class="item-details">
-                        <h6>Pistachio Nutella</h6><span>£5.95</span>
-                    </div>
-                </div>
-                <div class="menu-item-with-img">
-                    <img src="https://placehold.co/120x90/555555/FFFFFF?text=Oreo+Nutella+Waffle" onerror="this.onerror=null;this.src='https://placehold.co/120x90/555555/FFFFFF?text=Oreo+Nutella+Waffle';" alt="Oreo Nutella Waffle">
-                    <div class="item-details">
-                        <h6>Oreo Nutella</h6><span>£5.50</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-category">
-                <h4>Pancakes</h4>
-                <div class="menu-item-with-img">
-                    <img src="https://placehold.co/120x90/333333/FFFFFF?text=Biscoff+Pancake" onerror="this.onerror=null;this.src='https://placehold.co/120x90/333333/FFFFFF?text=Biscoff+Pancake';" alt="Biscoff Strawberry-Banana Pancakes">
-                    <div class="item-details">
-                        <h6>Biscoff Strawberry-Banana</h6><span>£6.95</span>
-                        <p>Fluffy golden pancakes layered with creamy Biscoff spread, fresh slices of ripe banana, and juicy strawberries. Topped with a drizzle of warm Biscoff sauce.</p>
-                    </div>
-                </div>
-                <div class="menu-item-with-img">
-                    <img src="https://placehold.co/120x90/333333/FFFFFF?text=Biscoff+Nutella+Pancake" onerror="this.onerror=null;this.src='https://placehold.co/120x90/333333/FFFFFF?text=Biscoff+Nutella+Pancake';" alt="Biscoff Nutella Pancakes">
-                    <div class="item-details">
-                        <h6>Biscoff Nutella</h6><span>£5.50</span>
-                        <p>Fluffy golden pancakes layered with rich, creamy Nutella, then drizzled with warm Biscoff sauce. Topped with crushed Lotus Biscoff biscuits.</p>
-                    </div>
-                </div>
-                <div class="menu-item-with-img">
-                    <img src="https://placehold.co/120x90/333333/FFFFFF?text=Pistachio+Nutella" onerror="this.onerror=null;this.src='https://placehold.co/120x90/333333/FFFFFF?text=Pistachio+Nutella';" alt="Pistachio nutella Pancakes">
-                    <div class="item-details">
-                        <h6>Pistachio Nutella</h6><span>£5.95</span>
-                        <p>Soft, fluffy pancakes layered with velvety Nutella and rich pistachio cream. Topped with crushed pistachios for a nutty crunch and a drizzle of chocolate sauce.</p>
-                    </div>
-                </div>
-                <div class="menu-item-with-img">
-                    <img src="https://placehold.co/120x90/333333/FFFFFF?text=Oreo+Nutella+Pancake" onerror="this.onerror=null;this.src='https://placehold.co/120x90/333333/FFFFFF?text=Oreo+Nutella+Pancake';" alt="Oreo Nutella Pancakes">
-                    <div class="item-details">
-                        <h6>Oreo Nutella</h6><span>£5.50</span>
-                        <p>A stack of fluffy pancakes layered with smooth Nutella and crushed Oreo cookies, drizzled with rich chocolate sauce.</p>
-                    </div>
-                </div>
-                <div class="menu-item-with-img">
-                    <img src="https://placehold.co/120x90/333333/FFFFFF?text=Kunafa+Pancake" onerror="this.onerror=null;this.src='https://placehold.co/120x90/333333/FFFFFF?text=Kunafa+Pancake';" alt="Kunafa crunch sandwich Pancake">
-                    <div class="item-details">
-                        <h6>Kunafa Crunch Sandwich</h6><span>£8.95</span>
-                        <p>A layer of pistachio kunafa sandwiched between fluffy pancakes, topped with your choice of Nutella or Biscoff.</p>
-                    </div>
-                </div>
-                <p class="add-on">Add ice cream **£1.50** (2 scoops **£2**) | Whipped cream **£0.70** | Add Pistachio Sauce **£0.50**</p>
-            </div>
-            
-            <div class="menu-category">
-                <h4>Crepes</h4>
                 <div class="menu-item-with-img">
                     <img src="https://placehold.co/120x90/555555/FFFFFF?text=Dubai+Crepe" onerror="this.onerror=null;this.src='https://placehold.co/120x90/555555/FFFFFF?text=Dubai+Crepe';" alt="Dubai Crepe pistachio Kunafa">
                     <div class="item-details">
                         <h6>Dubai Crepe Pistachio Kunafa</h6><span>£7.95</span>
                     </div>
                 </div>
+            </div>
+            
+            <div class="menu-category">
+                <h4>Dessert Pancakes (Specialty)</h4>
                 <div class="menu-item-with-img">
-                    <img src="https://placehold.co/120x90/555555/FFFFFF?text=Oreo+Nutella+Crepe" onerror="this.onerror=null;this.src='https://placehold.co/120x90/555555/FFFFFF?text=Oreo+Nutella+Crepe';" alt="Oreo Nutella Crepe">
+                    <img src="https://placehold.co/120x90/333333/FFFFFF?text=Biscoff+Pancake" onerror="this.onerror=null;this.src='https://placehold.co/120x90/333333/FFFFFF?text=Biscoff+Pancake';" alt="Biscoff Strawberry-Banana Pancakes">
                     <div class="item-details">
-                        <h6>Oreo Nutella</h6><span>£5.95</span>
+                        <h6>Biscoff Strawberry-Banana</h6><span>£6.95</span>
+                        <p>Fluffy golden pancakes layered with Biscoff, banana, and strawberries.</p>
                     </div>
                 </div>
                 <div class="menu-item-with-img">
-                    <img src="https://placehold.co/120x90/555555/FFFFFF?text=Choco+Berry+Crepe" onerror="this.onerror=null;this.src='https://placehold.co/120x90/555555/FFFFFF?text=Choco+Berry+Crepe';" alt="Choco Berry and banana Crepe">
+                    <img src="https://placehold.co/120x90/333333/FFFFFF?text=Kunafa+Pancake" onerror="this.onerror=null;this.src='https://placehold.co/120x90/333333/FFFFFF?text=Kunafa+Pancake';" alt="Kunafa crunch sandwich Pancake">
                     <div class="item-details">
-                        <h6>Choco Berry and Banana</h6><span>£6.95</span>
+                        <h6>Kunafa Crunch Sandwich Pancake</h6><span>£8.95</span>
+                        <p>A layer of pistachio kunafa sandwiched between fluffy pancakes.</p>
                     </div>
                 </div>
                 <div class="menu-item-with-img">
-                    <img src="https://placehold.co/120x90/555555/FFFFFF?text=Biscoff+Nutella+Crepe" onerror="this.onerror=null;this.src='https://placehold.co/120x90/555555/FFFFFF?text=Biscoff+Nutella+Crepe';" alt="Biscoff Nutella Crepe">
+                    <img src="https://placehold.co/120x90/333333/FFFFFF?text=Pistachio+Nutella" onerror="this.onerror=null;this.src='https://placehold.co/120x90/333333/FFFFFF?text=Pistachio+Nutella';" alt="Pistachio nutella Pancakes">
                     <div class="item-details">
-                        <h6>Biscoff Nutella</h6><span>£5.95</span>
+                        <h6>Pistachio Nutella Pancakes</h6><span>£5.95</span>
+                        <p>Soft, fluffy pancakes layered with velvety Nutella and rich pistachio cream.</p>
                     </div>
                 </div>
+                <p class="add-on">Add ice cream £1.50 (2 scoops £2) | Whipped cream £0.70</p>
             </div>
         </div>
 
         <div id="tab-drinks" class="tab-content">
             
-            <div class="menu-category">
-                <h4>Coffee (Hot)</h4>
-                <div class="drink-grid">
-                    <div><h6>Cappuccino</h6><span>£3.00</span><p>Classic blend of espresso, milk, and foam.</p></div>
-                    <div><h6>Americano</h6><span>£2.50</span><p>Smooth espresso mixed with hot water.</p></div>
-                    <div><h6>Mocha</h6><span>£3.95</span><p>Espresso mixed with chocolate and milk.</p></div>
-                    <div><h6>Espresso Shot</h6><span>£1.50/£2.00</span><p>Pure, strong coffee essence.</p></div>
-                </div>
-            </div>
-            
-            <div class="menu-category">
-                <h4>Hot Chocolate Coffee Specialties</h4>
-                <div class="drink-grid">
-                    <div><h6>Cracking / Crackle Chocolate Coffee</h6><span>£4.95</span><p>Rich chocolate with a hint of espresso, smooth and warming.</p></div>
-                    <div><h6>Chocolate Dalgona Coffee</h6><span>£4.45</span><p>Fluffy whipped chocolate foam over milk, playful and sweet.</p></div>
-                    <div><h6>The Ultimate Hot Chocolate Coffee</h6><span>£5.95</span><p>Deep, indulgent chocolate, extra creamy, the ultimate treat.</p></div>
-                    <div><h6>Hot Chocolate (Classic)</h6><span>£3.50</span><p>Rich, creamy chocolate indulgence.</p></div>
-                </div>
+            <div class="sub-tab-nav">
+                <button class="sub-tab-button active" onclick="openDrinkTab('sub-hot-drinks')">Hot Drinks</button>
+                <button class="sub-tab-button" onclick="openDrinkTab('sub-cold-drinks')">Cold & Specialty Drinks</button>
             </div>
 
-            <div class="menu-category">
-                <h4>Matcha Lattes</h4>
-                <div class="drink-grid">
-                    <div><h6>Blueberry Matcha</h6><span>£4.55</span><p>Fruity, fresh, lightly sweet. (~120 kcal)</p></div>
-                    <div><h6>Strawberry Matcha</h6><span>£4.55</span><p>Creamy strawberry notes with smooth matcha. (~130 kcal)</p></div>
-                    <div><h6>White Chocolate Matcha</h6><span>£4.55</span><p>Rich, velvety, indulgent. (~180 kcal)</p></div>
-                    <div><h6>Trimasu Matcha</h6><span>£4.55</span><p>Layered tiramisu flavor, soft and gentle. (~190 kcal)</p></div>
-                    <div><h6>Sweet-Heat Matcha</h6><span>£4.55</span><p>Subtle spice, sweet warmth.</p></div>
-                </div>
-            </div>
-
-            <div class="menu-category">
-                <h4>Specialty Lattes (Hot or Iced)</h4>
-                <div class="drink-grid">
-                    <div><h6>Whipped Honey Latte</h6><span>£4.55</span><p>Creamy latte with a touch of honey sweetness.</p></div>
-                    <div><h6>Korean Banana Milk Latte</h6><span>£5.95</span><p>Smooth, naturally sweet banana blended with milk and espresso.</p></div>
-                    <div><h6>Cracking Latte</h6><span>£4.45</span><p>Rich espresso, perfectly balanced with creamy milk, a café classic with a twist.</p></div>
-                    <div><h6>Ube Latte</h6><span>£4.75</span><p>Subtly sweet purple yam flavor, creamy and unique.</p></div>
-                    <div><h6>Spanish Iced Latte</h6><span>£4.95</span><p>Cold, smooth, with caramelized milk and espresso.</p></div>
-                </div>
-            </div>
-
-            <div class="menu-category">
-                <h4>Milkshakes</h4>
-                <div class="drink-grid">
-                    <div><h6>Avocado Bliss</h6><span>£5.25</span><p>A silky, creamy avocado shake that’s pure green indulgence.</p></div>
-                    <div><h6>Strawberry Serenade</h6><span>£5.25</span><p>Luscious strawberries blended into a refreshingly sweet delight.</p></div>
-                    <div><h6>Cookies & Cream Obsession</h6><span>£5.95</span><p>Decadent cookies fused with rich cream for a heavenly treat.</p></div>
-                    <div><h6>Mango Mirage</h6><span>£5.25</span><p>Sun-kissed mango transformed into a smooth, tropical escape.</p></div>
-                </div>
-            </div>
-
-            <div class="menu-category">
-                <h4>Tea & Boost</h4>
+            <div id="sub-hot-drinks" class="drink-content active">
+                <h4>Specialty Teas</h4>
                 <div class="drink-grid">
                     <div><h6>Masala Tea</h6><span>£3.00</span><p>Traditional spiced tea brewed to perfection.</p></div>
                     <div><h6>Karak Tea</h6><span>£3.00</span><p>Rich, creamy tea with strong flavours.</p></div>
                     <div><h6>Kashmiri Pink Tea</h6><span>£3.00</span><p>Fragrant pink tea with milk.</p></div>
                     <div><h6>Saffron Tea</h6><span>£3.00</span><p>Warm, aromatic tea infused with saffron.</p></div>
                     <div><h6>Elaichi Tea</h6><span>£3.00</span><p>Flavorful cardamom tea, pleasant aroma and refreshing taste.</p></div>
-                    <div><h6>House Tea</h6><span>£2.50</span><p>Simple, comforting black tea.</p></div>
-                    <div><h6>Boost Milk</h6><span>£3.75</span><p>Malted chocolate-flavored energy drink mix that helps to recharge the body and mind.</p></div> 
+                    <div><h6>House Tea</h6><span>£2.50</span><p>Our classic black tea brew.</p></div> 
+                </div>
+
+                <h4 style="margin-top: 2em;">Hot Coffees & Chocolate</h4>
+                <div class="drink-grid">
+                    <div><h6>Espresso (Single/Double)</h6><span>£2.00/£2.50</span><p>The purest coffee experience.</p></div>
+                    <div><h6>Cappuccino</h6><span>£3.50</span><p>Equal parts espresso, steamed milk, and foam.</p></div>
+                    <div><h6>Latte</h6><span>£3.50</span><p>Silky smooth steamed milk with a shot of espresso.</p></div>
+                    <div><h6>Americano</h6><span>£3.00</span><p>Espresso with hot water.</p></div>
+                    <div><h6>Mocha</h6><span>£3.80</span><p>Chocolate, espresso, and steamed milk.</p></div>
+                    <div><h6>Hot Chocolate</h6><span>£3.50</span><p>Rich, decadent classic comfort.</p></div>
                 </div>
             </div>
-            
+
+            <div id="sub-cold-drinks" class="drink-content">
+                <h4>Milkshakes & Smoothies</h4>
+                <div class="drink-grid">
+                    <div><h6>Biscoff Shake</h6><span>£4.50</span><p>Blended with Biscoff biscuits and sauce.</p></div>
+                    <div><h6>Oreo Shake</h6><span>£4.50</span><p>Crushed Oreos blended into a creamy shake.</p></div>
+                    <div><h6>Strawberry Cream Shake</h6><span>£4.50</span><p>Classic strawberry ice cream blended smooth.</p></div>
+                    <div><h6>Mango Tropical Smoothie</h6><span>£5.00</span><p>Fresh mango blended with ice and yogurt.</p></div>
+                </div>
+
+                <h4 style="margin-top: 2em;">Cold Coffees & Coolers</h4>
+                <div class="drink-grid">
+                    <div><h6>Iced Latte</h6><span>£3.80</span><p>Espresso, milk, and ice.</p></div>
+                    <div><h6>Iced Mocha</h6><span>£4.20</span><p>Chocolate, espresso, milk, and ice.</p></div>
+                    <div><h6>Affogato</h6><span>£3.50</span><p>Shot of hot espresso poured over a scoop of vanilla ice cream.</p></div>
+                    <div><h6>Lemon & Mint Cooler</h6><span>£4.00</span><p>Refreshing crushed ice drink.</p></div>
+                </div>
+                <p class="add-on">Add a flavour shot (Caramel, Vanilla, Hazelnut) £0.50</p>
+            </div>
         </div>
     </section>
 
@@ -854,6 +790,31 @@
             // Show the selected tab content and set the button as active
             const selectedContent = document.getElementById(tabId);
             const selectedButton = document.querySelector(`.tab-button[onclick*='${tabId}']`);
+            
+            if (selectedContent && selectedButton) {
+                selectedContent.classList.add('active');
+                selectedButton.classList.add('active');
+
+                // If the drinks tab is opened, ensure its default sub-tab is also shown
+                if (tabId === 'tab-drinks') {
+                    openDrinkTab('sub-hot-drinks');
+                }
+            }
+        }
+
+        // Function to handle sub-menu tab switching (Drinks)
+        function openDrinkTab(tabId) {
+            // Hide all drink contents and remove 'active' class from sub-buttons
+            document.querySelectorAll('.drink-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.querySelectorAll('.sub-tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Show the selected drink content and set the sub-button as active
+            const selectedContent = document.getElementById(tabId);
+            const selectedButton = document.querySelector(`.sub-tab-button[onclick*='${tabId}']`);
             
             if (selectedContent && selectedButton) {
                 selectedContent.classList.add('active');
